@@ -3,24 +3,8 @@ services:
   lenpaste:
     image: ghcr.io/lcomrade/lenpaste:latest
     container_name: lenpaste
-    environment:
-      - LENPASTE_ADDRESS=:80                  # ADDRES:PORT for HTTP server.
-      - LENPASTE_DB_DRIVER=sqlite3            # Currently supported drivers: 'sqlite3' and 'postgres'.
-      - LENPASTE_DB_SOURCE=/data/lenpaste.db   # DB source.
-      - LENPASTE_DB_CLEANUP_PERIOD=3h         # Interval at which the DB is cleared of expired but not yet deleted pastes.
-      - LENPASTE_ROBOTS_DISALLOW=false        # Prohibits search engine crawlers from indexing site using robots.txt file.
-      - LENPASTE_TITLE_MAX_LENGTH=100         # Maximum length of the paste title. If 0 disable title, if -1 disable length limit.
-      - LENPASTE_BODY_MAX_LENGTH=20000        # Maximum length of the paste body. If -1 disable length limit. Can't be -1.
-      - LENPASTE_MAX_PASTE_LIFETIME=unlimited # Maximum lifetime of the paste. Examples: 10m, 1h 30m, 12h, 7w, 30d, 365d.
-      - LENPASTE_NEW_PASTES_PER_5MIN=15       # Maximum number of paste that can be created in 5 minutes from one IP. If 0 disable rate-limit.
-      - LENPASTE_ADMIN_NAME=admin             # Name of the administrator of this server.
-      - LENPASTE_ADMIN_MAIL=admin@gmail.com   # Email of the administrator of this server.
-      - LENPASTE_UI_DEFAULT_LIFETIME=never         # Lifetime of paste will be set by default in WEB interface. Examples: 10min, 1h, 1d, 2w, 6mon, 1y.
     volumes:
       - ./data:/data
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
     ports:
       - "8200:80"
     restart: unless-stopped
-
