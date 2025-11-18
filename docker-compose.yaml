@@ -1,10 +1,11 @@
 services:
 
   lenpaste:
-    image: ghcr.io/lcomrade/lenpaste:latest
+    image: ghcr.io/lcomrade/lenpaste:1.3.1
     container_name: lenpaste
     volumes:
       - ./data:/data
     ports:
       - "8200:80"
     restart: unless-stopped
+
