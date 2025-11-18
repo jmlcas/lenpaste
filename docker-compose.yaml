@@ -1,7 +1,7 @@
 services:
 
   lenpaste:
-    image: git.lcomrade.su/root/lenpaste:latest
+    image: ghcr.io/lcomrade/lenpaste:latest
     container_name: lenpaste
     environment:
       - LENPASTE_ADDRESS=:80                  # ADDRES:PORT for HTTP server.
@@ -23,3 +23,4 @@ services:
     ports:
       - "8200:80"
     restart: unless-stopped
+
